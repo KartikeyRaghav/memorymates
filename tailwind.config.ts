@@ -18,6 +18,24 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      animation: {
+        shimmer: "shimmer 2s linear infinite",
+        move: "move 5s linear infinite",
+      },
+      keyframes: {
+        shimmer: {
+          from: {
+            backgroundPosition: "0 0",
+          },
+          to: {
+            backgroundPosition: "-200% 0",
+          },
+        },
+        move: {
+          "0%": { transform: "translateX(-200px)" },
+          "100%": { transform: "translateX(200px)" },
+        },
+      },
     },
   },
   plugins: [addVariablesForColors],
