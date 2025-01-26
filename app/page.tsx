@@ -1,6 +1,6 @@
 import Hero from "@/components/sections/Hero";
-import Mails from "@/components/sections/Mails";
-import Questions from "@/components/sections/Questions";
+import SecondSix from "@/components/sections/SecondSix";
+import FirstFive from "@/components/sections/FirstFive";
 import { FloatingNav } from "@/components/ui/floating-navbar";
 
 const Home = () => {
@@ -8,8 +8,8 @@ const Home = () => {
     <div>
       <FloatingNav />
       <Hero />
-      <Questions />
-      <Mails />
+      <FirstFive />
+      <SecondSix />
     </div>
   );
 };

@@ -1,14 +1,14 @@
 "use client";
 
 import { useEffect, useId, useState } from "react";
-import { cards } from "../constants/cards";
+import { firstFive } from "../constants/cards";
 import { useOutsideClick } from "@/hooks/use-outside-click";
 import { AnimatePresence, motion } from "framer-motion";
 
-const SummList = () => {
-  const [active, setActive] = useState<(typeof cards)[number] | boolean | null>(
-    null
-  );
+const QueList = () => {
+  const [active, setActive] = useState<
+    (typeof firstFive)[number] | boolean | null
+  >(null);
   const id = useId();
 
   useEffect(() => {
@@ -125,7 +125,7 @@ const SummList = () => {
         ) : null}
       </AnimatePresence>
       <ul className="max-w-7xl mx-auto w-full gap-4">
-        {cards.map((card, index) => (
+        {firstFive.map((card, index) => (
           <motion.div
             layoutId={`card-${card.subject}-${id}`}
             key={`card-${card.subject}-${id}`}
@@ -203,4 +203,4 @@ export const CloseIcon = () => {
   );
 };
 
-export default SummList;
+export default QueList;

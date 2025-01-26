@@ -1,4 +1,4 @@
-export const cards = [
+export const firstFive = [
   {
     sender: "Priyanka Singh <psingh@iiti.ac.in>",
     subject: "Interaction with Dr. Siddhartha Gupta",

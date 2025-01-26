@@ -7,7 +7,6 @@ import gsap from "gsap";
 gsap.registerPlugin(useGSAP);
 
 const LogoM = () => {
-  const { innerWidth: width, innerHeight: height } = window;
   useGSAP(() => {
     var tl = gsap.timeline();
     gsap.to("#inner_logo", { marginTop: "38vh" });
@@ -33,12 +32,12 @@ const LogoM = () => {
       { rotate: -45 }
     );
     tl.to(["#logo-left-slant", "#logo-left-straight"], {
-      translateX: width > 767 ? "-6vw" : "-45px",
+      translateX: innerWidth > 767 ? "-6vw" : "-45px",
       scaleY: 0.3,
     });
     gsap.to(["#logo-right-slant", "#logo-right-straight"], {
-      translateX: width > 767 ? "6vw" : "45px",
-      translateY: width > 767 ? "-6vw" : "-45px",
+      translateX: innerWidth > 767 ? "6vw" : "45px",
+      translateY: innerWidth > 767 ? "-6vw" : "-45px",
       rotate: 45,
       scaleY: 0.3,
       delay: 2.5,
@@ -46,17 +45,17 @@ const LogoM = () => {
     tl.to("#logo-left-straight", {
       scaleY: 0.5,
       rotate: 0,
-      translateX: width > 767 ? "-8.5vw" : "-66px",
-      translateY: width > 767 ? "3.15vw" : "24px",
+      translateX: innerWidth > 767 ? "-8.5vw" : "-66px",
+      translateY: innerWidth > 767 ? "3.15vw" : "24px",
     });
     gsap.to("#logo-right-straight", {
       scaleY: 0.5,
       rotate: 0,
-      translateX: width > 767 ? "8.28vw" : "66px",
-      translateY: width > 767 ? "-2.3vw" : "-21px",
+      translateX: innerWidth > 767 ? "8.28vw" : "66px",
+      translateY: innerWidth > 767 ? "-2.3vw" : "-21px",
       delay: 3,
     });
-    if (width > 767) {
+    if (innerWidth > 767) {
       tl.to("#logo", { translateX: "-33vw", duration: 1, delay: 0.5 });
       gsap.to("#name", {
         translateX: "43vw",

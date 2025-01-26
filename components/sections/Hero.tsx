@@ -29,7 +29,7 @@ const Hero = () => {
           <LogoM />
           <p
             id="tagline"
-            className="z-1 text-[3vw] text-xl md:text-3xl lg:text-4xl tracking-widest opacity-0 px-20 text-center"
+            className="z-10 text-[3vw] text-xl md:text-3xl lg:text-4xl tracking-widest opacity-0 px-20 text-center"
           >
             Learn Faster,{" "}
             <span className="whitespace-nowrap">Retain Longer</span>

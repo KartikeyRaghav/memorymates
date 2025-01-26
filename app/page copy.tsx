@@ -1,4 +1,3 @@
-import { Boxes } from "@/components/ui/background-boxes";
 import { TextRevealCard, TextRevealCardDescription, TextRevealCardTitle } from "@/components/ui/text-reveal-card";
 import { cn } from "@/lib/utils";
 
@@ -8,7 +7,6 @@ export default function Home() {
       <div className="h-[100vh] relative w-full overflow-hidden flex flex-col items-center justify-center rounded-lg">
         <div className="absolute inset-0 w-full h-full z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
 
-        <Boxes />
         <h1 className={cn("md:text-4xl text-xl text-white relative z-20")}>
           Tailwind is Awesome
         </h1>
