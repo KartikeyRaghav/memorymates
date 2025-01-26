@@ -7,8 +7,10 @@ import gsap from "gsap";
 gsap.registerPlugin(useGSAP);
 
 const LogoM = () => {
+  const { innerWidth: width, innerHeight: height } = window;
   useGSAP(() => {
     var tl = gsap.timeline();
+    gsap.to("#inner_logo", { marginTop: "38vh" });
     tl.to("#hero", { opacity: 1, duration: 1 });
     tl.to(
       [
@@ -31,12 +33,12 @@ const LogoM = () => {
       { rotate: -45 }
     );
     tl.to(["#logo-left-slant", "#logo-left-straight"], {
-      translateX: "-6vw",
+      translateX: width > 767 ? "-6vw" : "-45px",
       scaleY: 0.3,
     });
     gsap.to(["#logo-right-slant", "#logo-right-straight"], {
-      translateX: "6vw",
-      translateY: "-6vw",
+      translateX: width > 767 ? "6vw" : "45px",
+      translateY: width > 767 ? "-6vw" : "-45px",
       rotate: 45,
       scaleY: 0.3,
       delay: 2.5,
@@ -44,33 +46,41 @@ const LogoM = () => {
     tl.to("#logo-left-straight", {
       scaleY: 0.5,
       rotate: 0,
-      translateX: "-8.5vw",
-      translateY: "3.15vw",
+      translateX: width > 767 ? "-8.5vw" : "-66px",
+      translateY: width > 767 ? "3.15vw" : "24px",
     });
     gsap.to("#logo-right-straight", {
       scaleY: 0.5,
       rotate: 0,
-      translateX: "8.28vw",
-      translateY: "-2.3vw",
+      translateX: width > 767 ? "8.28vw" : "66px",
+      translateY: width > 767 ? "-2.3vw" : "-21px",
       delay: 3,
     });
-    tl.to("#logo", { translateX: "-27vw", duration: 1, delay: 0.5 });
-    gsap.to("#name", {
-      translateX: "38vw",
-      opacity: 1,
-      duration: 1,
-      delay: 4,
-    });
-    tl.to("#logo", { translateY: "-6vh", duration: 1 });
+    if (width > 767) {
+      tl.to("#logo", { translateX: "-33vw", duration: 1, delay: 0.5 });
+      gsap.to("#name", {
+        translateX: "43vw",
+        opacity: 1,
+        duration: 1,
+        delay: 4,
+      });
+      tl.to("#logo", { translateY: "-6vh", duration: 1 });
+    } else {
+      tl.to("#inner_logo", {
+        scale: 1.5,
+        duration: 1,
+        delay: 0.5,
+      });
+    }
   }, {});
 
   return (
-    <div
-      id="hero"
-      className="w-full h-full flex items-center justify-center opacity-0"
-    >
-      <div id="logo" className="w-full h-full">
-        <div className="relative mt-[50vh] flex items-center justify-center">
+    <div id="hero" className="flex items-center justify-center opacity-0">
+      <div id="logo">
+        <div
+          id="inner_logo"
+          className="relative flex items-center justify-center"
+        >
           {logo_ids.map((item, i) => (
             <div
               id={item}
@@ -78,16 +88,18 @@ const LogoM = () => {
               className="absolute opacity-0 text-[20rem] bg-white"
               style={{
                 width: "1.5vw",
+                minWidth: "11px",
                 height: "25vw",
+                minHeight: "192px",
                 borderRadius: "0.75vw",
               }}
             ></div>
           ))}
           <p
             id="name"
-            className="absolute opacity-0 translate-y-[3vw] font-bold text-[12vw] font-serif hidden md:block "
+            className="opacity-0 translate-y-[5vw] font-bold text-[8vw] font-serif hidden md:block "
           >
-            AIL MAP
+            EMORY MATES
           </p>
         </div>
       </div>

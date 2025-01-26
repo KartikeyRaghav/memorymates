@@ -10,13 +10,13 @@ gsap.registerPlugin(useGSAP);
 const Hero = () => {
   useGSAP(() => {
     gsap.to("#tagline", {
-      translateY: "17vh",
+      marginTop: innerWidth > 767 ? '3.5vh' : '140px',
       opacity: 1,
       duration: 1,
       delay: 5,
     });
     gsap.to("#button", {
-      translateY: "30vh",
+      translateY: "12vh",
       display: "inline-flex",
       delay: 5.5,
     });
@@ -29,9 +29,10 @@ const Hero = () => {
           <LogoM />
           <p
             id="tagline"
-            className="z-1 translate-y-[10vh] text-[3vw] text-xl md:text-3xl lg:text-4xl tracking-widest opacity-0 px-20 text-center"
+            className="z-1 text-[3vw] text-xl md:text-3xl lg:text-4xl tracking-widest opacity-0 px-20 text-center"
           >
-            An Email Summarizer that helps you save time
+            Learn Faster,{" "}
+            <span className="whitespace-nowrap">Retain Longer</span>
           </p>
 
           <a href="">

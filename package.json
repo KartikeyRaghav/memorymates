@@ -9,9 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
     "@tabler/icons-react": "^3.28.1",
     "clsx": "^2.1.1",
     "framer-motion": "^11.18.2",
+    "gsap": "^3.12.7",
     "next": "15.1.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

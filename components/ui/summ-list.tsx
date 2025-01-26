@@ -1,12 +1,12 @@
 "use client";
 
 import { useEffect, useId, useState } from "react";
-import data from "../constants/mails.json";
+import { cards } from "../constants/cards";
 import { useOutsideClick } from "@/hooks/use-outside-click";
 import { AnimatePresence, motion } from "framer-motion";
 
 const SummList = () => {
-  const [active, setActive] = useState<(typeof data)[number] | boolean | null>(
+  const [active, setActive] = useState<(typeof cards)[number] | boolean | null>(
     null
   );
   const id = useId();
@@ -74,7 +74,7 @@ const SummList = () => {
                 <img
                   width={200}
                   height={200}
-                  src=""
+                  src={active.src}
                   alt={active.subject}
                   className="w-full h-40 lg:h-40 sm:rounded-tr-lg sm:rounded-tl-lg object-cover object-top"
                 />
@@ -90,20 +90,20 @@ const SummList = () => {
                       {active.subject}
                     </motion.h3>
                     <motion.p
-                      layoutId={`from-${active.from}-${id}`}
+                      layoutId={`from-${active.sender}-${id}`}
                       className="text-neutral-600 dark:text-neutral-400"
                     >
-                      {active.from}
+                      {active.sender}
                     </motion.p>
                   </div>
 
                   <motion.a
                     layoutId={`button-${active.subject}-${id}`}
-                    href=""
+                    href={active.ctaLink}
                     target="_blank"
                     className="px-4 py-3 text-sm rounded-full tracking-wide font-bold bg-green-500 text-white"
                   >
-                    Read
+                    {active.ctaText}
                   </motion.a>
                 </div>
                 <div className="pt-4 relative px-4">
@@ -114,7 +114,9 @@ const SummList = () => {
                     exit={{ opacity: 0 }}
                     className="text-neutral-600 text-xs md:text-sm lg:text-base h-40 md:h-fit pb-10 flex flex-col items-start gap-4 overflow-auto dark:text-neutral-400 [mask:linear-gradient(to_bottom,white,white,transparent)] [scrollbar-width:none] [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch]"
                   >
-                    {active.body}
+                    {typeof active.content === "function"
+                      ? active.content()
+                      : active.content}
                   </motion.div>
                 </div>
               </div>
@@ -123,7 +125,7 @@ const SummList = () => {
         ) : null}
       </AnimatePresence>
       <ul className="max-w-7xl mx-auto w-full gap-4">
-        {data.map((card, index) => (
+        {cards.map((card, index) => (
           <motion.div
             layoutId={`card-${card.subject}-${id}`}
             key={`card-${card.subject}-${id}`}
@@ -135,7 +137,7 @@ const SummList = () => {
                 <img
                   width={100}
                   height={100}
-                  src=""
+                  src={card.src}
                   alt={card.subject}
                   className="h-40 w-40 md:h-14 md:w-14 rounded-lg object-cover object-top"
                 />
@@ -148,10 +150,10 @@ const SummList = () => {
                   {card.subject}
                 </motion.h3>
                 <motion.p
-                  layoutId={`from-${card.from}-${id}`}
+                  layoutId={`from-${card.sender}-${id}`}
                   className="text-neutral-600 dark:text-neutral-400 text-center md:text-left"
                 >
-                  {card.from}
+                  {card.sender}
                 </motion.p>
               </div>
             </div>
@@ -159,7 +161,7 @@ const SummList = () => {
               layoutId={`button-${card.subject}-${id}`}
               className="px-4 py-2 text-sm rounded-full font-bold tracking-wide bg-gray-100 hover:bg-green-500 hover:text-white text-black mt-4 md:mt-0"
             >
-              Read
+              {card.ctaText}
             </motion.button>
           </motion.div>
         ))}
