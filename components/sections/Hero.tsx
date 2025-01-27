@@ -23,7 +23,7 @@ const Hero = () => {
   }, {});
   return (
     <BackgroundLines className="min-h-[100vh]">
-      <div className="flex justify-center items-center flex-col">
+      <div id="home" className="flex justify-center items-center flex-col">
         <LogoM />
         <p
           id="tagline"

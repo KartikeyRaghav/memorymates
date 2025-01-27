@@ -9,6 +9,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useState } from "react";
 import Geography from "@/components/sections/Geography";
+import Footer from "@/components/sections/Footer";
 
 const Home = () => {
   const [count, setCount] = useState(0);
@@ -24,6 +25,7 @@ const Home = () => {
       <English count={count} setCount={setCount} />
       <Maths count={count} setCount={setCount} />
       <Geography count={count} setCount={setCount} />
+      <Footer />
       <div id="number" className="opacity-0 fixed right-10 z-auto">
         <Cover>{count} questions done</Cover>
       </div>
