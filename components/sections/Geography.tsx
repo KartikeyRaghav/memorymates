@@ -3,9 +3,6 @@ import { Carousel } from "../ui/carousel";
 import SectionLayout from "./section-layout";
 import { geography } from "../constants/cards";
 import { useOutsideClick } from "@/hooks/use-outside-click";
-import { AnimatePresence, motion } from "framer-motion";
-import { CloseIcon } from "../ui/CloseIcon";
-import { AiFillCheckCircle, AiFillQuestionCircle } from "react-icons/ai";
 
 const Geography = ({
   count,

@@ -1,5 +1,3 @@
-import { AiFillQuestionCircle } from "react-icons/ai";
-
 export const english = [
   {
     question: "What is a synonym for “happy”?",
