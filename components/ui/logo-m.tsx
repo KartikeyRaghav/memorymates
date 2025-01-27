@@ -8,7 +8,7 @@ gsap.registerPlugin(useGSAP);
 
 const LogoM = () => {
   useGSAP(() => {
-    var tl = gsap.timeline();
+    const tl = gsap.timeline();
     gsap.to("#inner_logo", { marginTop: "38vh" });
     tl.to("#hero", { opacity: 1, duration: 1 });
     tl.to(
