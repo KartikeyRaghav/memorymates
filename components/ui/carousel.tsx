@@ -16,7 +16,7 @@ interface SlideProps {
   handleSlideClick: (index: number) => void;
 }
 
-const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
+export const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
   const slideRef = useRef<HTMLLIElement>(null);
 
   const xRef = useRef(0);
@@ -132,7 +132,7 @@ interface CarouselControlProps {
   handleClick: () => void;
 }
 
-const CarouselControl = ({
+export const CarouselControl = ({
   type,
   title,
   handleClick,

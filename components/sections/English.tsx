@@ -130,7 +130,7 @@ const English = ({
           ) : null}
         </AnimatePresence>
         <ul className="max-w-7xl mx-auto w-full gap-4">
-          {english.map((card, index) => (
+          {english.map((card) => (
             <motion.div
               layoutId={`card-${card.question}-${id}`}
               key={`card-${card.question}-${id}`}
