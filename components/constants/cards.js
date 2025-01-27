@@ -83,7 +83,7 @@ export const geography = [
   },
   {
     question: "Which desert is the largest in the world?",
-    answer: "The Sahara Desert",
+    answer: "Sahara Desert",
     done: false,
     src: 'https://cdn-ikppcfn.nitrocdn.com/jqtVDbjdfBPrQSiPhMihAdYLibcqMkkx/assets/images/optimized/rev-4c3905d/sevennaturalwonders.org/wp-content/uploads/2023/11/Sahara-Desert-sunset.jpg'
   },

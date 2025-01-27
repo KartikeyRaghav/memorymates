@@ -1,6 +1,10 @@
 "use client";
+import { useGSAP } from "@gsap/react";
 import { IconArrowNarrowRight } from "@tabler/icons-react";
+import gsap from "gsap";
 import { useState, useRef, useId, useEffect } from "react";
+
+gsap.registerPlugin(useGSAP);
 
 interface SlideData {
   question: string;
@@ -23,6 +27,7 @@ export const Slide = ({
   handleSlideClick,
 }: SlideProps) => {
   const slideRef = useRef<HTMLLIElement>(null);
+  const [showAnswer, setShowAnswer] = useState(false);
 
   const xRef = useRef(0);
   const yRef = useRef(0);
@@ -68,7 +73,7 @@ export const Slide = ({
     event.currentTarget.style.opacity = "1";
   };
 
-  const { src, question, answer, done } = slide;
+  const { src, question, answer } = slide;
 
   return (
     <div className="[perspective:1200px] [transform-style:preserve-3d]">
@@ -122,11 +127,9 @@ export const Slide = ({
           </h2>
           <div className="flex justify-center">
             <button
-              className={`mt-6 px-4 py-2 tracking-wider text-[1.2rem] w-fit mx-auto h-12 border border-transparent flex justify-center items-center rounded-2xl hover:shadow-lg transition duration-200 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] font-bold ${
-                done ? "bg-green-500 text-white" : "text-green-500 bg-white"
-              }`}
+              className={`mt-6 px-4 py-2 tracking-wider text-[1.2rem] w-fit mx-auto h-12 border border-transparent flex justify-center items-center rounded-2xl hover:shadow-lg transition duration-200 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] font-bold bg-green-500 text-white`}
             >
-              {done ? "Answered" : "Answer"}
+              {answer}
             </button>
           </div>
         </article>
