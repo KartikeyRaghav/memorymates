@@ -2,8 +2,15 @@ import { useOutsideClick } from "@/hooks/use-outside-click";
 import { useEffect, useId, useState } from "react";
 import { firstFive } from "../constants/cards";
 import { AnimatePresence, motion } from "framer-motion";
+import { AiFillCheckCircle, AiFillQuestionCircle } from "react-icons/ai";
 
-const FirstFive = () => {
+const FirstFive = ({
+  count,
+  setCount,
+}: {
+  count: number;
+  setCount: Function;
+}) => {
   const [active, setActive] = useState<
     (typeof firstFive)[number] | boolean | null
   >(null);
@@ -75,7 +82,13 @@ const FirstFive = () => {
                   className="flex flex-col md:flex-row items-center justify-center"
                   layoutId={`image-${active.subject}-${id}`}
                 >
-                  <div className="md:mr-3">{active.icon}</div>
+                  <div className="md:mr-3">
+                    {active.done ? (
+                      <AiFillCheckCircle className="h-40 w-40 md:h-14 md:w-14 rounded-lg object-cover object-top text-green-500" />
+                    ) : (
+                      <AiFillQuestionCircle className="h-40 w-40 md:h-14 md:w-14 rounded-lg object-cover object-top" />
+                    )}
+                  </div>
                   <motion.h3
                     layoutId={`subject-${active.subject}-${id}`}
                     className="font-bold mt-4 md:mt-0 text-neutral-700 text-[1.5rem] text-center md:text-left dark:text-neutral-200"
@@ -99,9 +112,14 @@ const FirstFive = () => {
                       <motion.button
                         layoutId={`button-${active.subject}-${id}`}
                         onClick={() => {
-                          active.done = true;
+                          if (!active.done) {
+                            active.done = true;
+                            setCount(count + 1);
+                          }
                         }}
-                        className="px-4 py-3 text-sm rounded-full tracking-wide font-bold bg-green-500 text-white"
+                        className={`px-4 py-3 text-sm rounded-full tracking-wide font-bold ${
+                          active.done ? "bg-green-500" : "bg-blue-900"
+                        } text-white`}
                       >
                         {active.done ? "Done" : "Mark as Done"}
                       </motion.button>
@@ -125,7 +143,11 @@ const FirstFive = () => {
                   className="flex items-center justify-center"
                   layoutId={`image-${card.subject}-${id}`}
                 >
-                  {card.icon}
+                  {card.done ? (
+                    <AiFillCheckCircle className="h-40 w-40 md:h-14 md:w-14 rounded-lg object-cover object-top text-green-500" />
+                  ) : (
+                    <AiFillQuestionCircle className="h-40 w-40 md:h-14 md:w-14 rounded-lg object-cover object-top" />
+                  )}
                 </motion.div>
                 <div className="">
                   <motion.h3

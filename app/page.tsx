@@ -8,8 +8,11 @@ import { Cover } from "@/components/ui/cover";
 import { Carousel } from "@/components/ui/carousel";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { useState } from "react";
 
 const Home = () => {
+  const [count, setCount] = useState(0);
+
   useGSAP(() => {
     gsap.to("#number", { opacity: 1, delay: 5.5, top: "2.5rem" });
   }, {});
@@ -18,13 +21,13 @@ const Home = () => {
     <div>
       <FloatingNav />
       <Hero />
-      <FirstFive />
+      <FirstFive count={count} setCount={setCount} />
       <SecondSix />
       <div className="relative overflow-hidden w-full h-full py-20">
         <Carousel slides={slideData} />
       </div>
       <div id="number" className="opacity-0 fixed right-10 z-auto">
-        <Cover>0 questions done</Cover>
+        <Cover>{count} questions done</Cover>
       </div>
     </div>
   );
