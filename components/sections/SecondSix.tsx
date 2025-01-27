@@ -1,28 +1,74 @@
-import { PinContainer } from "../ui/3d-pin";
+import { cn } from "@/lib/utils";
+import { CardStack } from "../ui/card-stack";
 
 const SecondSix = () => {
   return (
     <div className="my-20">
-      <div className="h-[40rem] w-full flex items-center justify-center ">
-        <PinContainer
-          title="Question"
-          href="https://twitter.com/mannupaaji"
-        >
-          <div className="flex basis-full flex-col p-4 tracking-tight text-slate-100/50 sm:basis-1/2 w-[20rem] h-[20rem] ">
-            <h3 className="max-w-xs !pb-2 !m-0 font-bold  text-base text-slate-100">
-              Aceternity UI
-            </h3>
-            <div className="text-base !m-0 !p-0 font-normal">
-              <span className="text-slate-500 ">
-                Customizable Tailwind CSS and Framer Motion Components.
-              </span>
-            </div>
-            <div className="flex flex-1 w-full rounded-lg mt-4 bg-gradient-to-br from-violet-500 via-purple-500 to-blue-500" />
-          </div>
-        </PinContainer>
+      <div className="h-[40rem] flex items-center justify-center w-full">
+        <CardStack items={CARDS} />
       </div>
     </div>
   );
 };
 
 export default SecondSix;
+
+export const Highlight = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => {
+  return (
+    <span
+      className={cn(
+        "font-bold bg-emerald-100 text-emerald-700 dark:bg-emerald-700/[0.2] dark:text-emerald-500 px-1 py-0.5",
+        className
+      )}
+    >
+      {children}
+    </span>
+  );
+};
+
+const CARDS = [
+  {
+    id: 0,
+    name: "Manu Arora",
+    designation: "Senior Software Engineer",
+    content: (
+      <p>
+        These cards are amazing, <Highlight>I want to use them</Highlight> in my
+        project. Framer motion is a godsend ngl tbh fam 🙏
+      </p>
+    ),
+  },
+  {
+    id: 1,
+    name: "Elon Musk",
+    designation: "Senior Shitposter",
+    content: (
+      <p>
+        I dont like this Twitter thing,{" "}
+        <Highlight>deleting it right away</Highlight> because yolo. Instead, I
+        would like to call it <Highlight>X.com</Highlight> so that it can easily
+        be confused with adult sites.
+      </p>
+    ),
+  },
+  {
+    id: 2,
+    name: "Tyler Durden",
+    designation: "Manager Project Mayhem",
+    content: (
+      <p>
+        The first rule of
+        <Highlight>Fight Club</Highlight> is that you do not talk about fight
+        club. The second rule of
+        <Highlight>Fight club</Highlight> is that you DO NOT TALK about fight
+        club.
+      </p>
+    ),
+  },
+];
